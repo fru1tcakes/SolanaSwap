@@ -70,7 +70,7 @@ async function sendSolana(recipientAddress: string, amount: number) {
       SystemProgram.transfer({
         fromPubkey: serverWallet.publicKey,
         toPubkey: new PublicKey(recipientAddress),
-        lamports: LAMPORTS_PER_SOL * amount,
+        lamports: Math.round(LAMPORTS_PER_SOL * amount), // Round to ensure integer lamports
       })
     )
 
